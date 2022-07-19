@@ -1,7 +1,9 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
@@ -48,7 +50,8 @@ public class SwerveSubsystem extends SubsystemBase{
             DriveConstants.kBackRightDriveAbsoluteEncoderReversed);
 
     private ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-
+    //parameters = configuration, current value of gyro
+    private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(DriveConstants.kDriveKinematics, new Rotation2d(0));
     public SwerveSubsystem(){
         new Thread(() -> {
             try{
@@ -69,9 +72,25 @@ public class SwerveSubsystem extends SubsystemBase{
         return Rotation2d.fromDegrees(getHeading());
     }
 
+    public Pose2d getPose(){
+        //get location determined by odometer
+        return odometer.getPoseMeters();
+    }
+
+    public void resetOdometry(Pose2d pose) {
+        //reset odometer to new location
+        /*Pose2d is a class which contains both a Translation2d and a Rotation2d
+        the three contain the x, y, and theta coordinates of the robot*/
+        odometer.resetPosition(pose, getRotation2d());
+    }
+
     @Override
     public void periodic() {
         SmartDashboard.putNumber("Robot Heading", getHeading());
+        //repeatedly update odometer for it to accummulate robot location:
+        //provides with robot heading and the states of all four modules
+        odometer.update(getRotation2d(), frontLeft.getState(), frontRight.getState(), backLeft.getState(),
+                backRight.getState());
     }
 
     public void stopModules(){
