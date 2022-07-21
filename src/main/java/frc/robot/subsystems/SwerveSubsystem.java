@@ -53,6 +53,7 @@ public class SwerveSubsystem extends SubsystemBase{
     //parameters = configuration, current value of gyro
     private final SwerveDriveOdometry odometer = new SwerveDriveOdometry(DriveConstants.kDriveKinematics, new Rotation2d(0));
     public SwerveSubsystem(){
+        //delay gyro reset by a second so it's not alr busy with calibration
         new Thread(() -> {
             try{
                 Thread.sleep(1000);

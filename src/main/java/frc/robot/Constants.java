@@ -22,21 +22,21 @@ public final class Constants {
     //figure them out before testing or it will get very very ugly
 
     public static final class ModuleConstants {
-        public static final double kWheelDiameterInches = 4;
+        public static final double kWheelDiameterInches = 4; //! MEASURE
         public static final double kWheelDiameterMeters = Units.inchesToMeters(kWheelDiameterInches);
-        public static final double kDriveMotorGearRatio = 1/6;
-        public static final double kTurningMotorGearRatio = 1/18;
-        public static final double kDriveEncoderRot2Meter = kDriveMotorGearRatio * Math.PI * kWheelDiameterMeters;
+        public static final double kDriveMotorGearRatio = 1/6; //! MEASURE
+        public static final double kTurningMotorGearRatio = 1/18; //! MEASURE
+        public static final double kDriveEncoderRot2Meter = kDriveMotorGearRatio * Math.PI * kWheelDiameterMeters; 
         public static final double kTurningEncoderRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
         public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;
         public static final double kTurningEncoderRPM2RadPerSec = kTurningEncoderRot2Rad / 60;
-        public static final double kPTurning = 0.5; 
+        public static final double kPTurning = 0.5; //! TUNE
     }
     public static final class DriveConstants {
 
-        public static final double kTrackWidth = Units.inchesToMeters(21);
+        public static final double kTrackWidth = Units.inchesToMeters(21); //! MEASURE
         // Distance between right and left wheels
-        public static final double kWheelBase = Units.inchesToMeters(25.5);
+        public static final double kWheelBase = Units.inchesToMeters(25.5); //! MEASURE
         // Distance between front and back wheels
         public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
                 new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
@@ -44,49 +44,51 @@ public final class Constants {
                 new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
                 new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
         //module parameters
-        public static final int kFrontLeftDriveMotorPort = 8;
-        public static final int kBackLeftDriveMotorPort = 2;
-        public static final int kFrontRightDriveMotorPort = 6;
-        public static final int kBackRightDriveMotorPort = 4;
+        public static final int kFrontLeftDriveMotorPort = 8; //! PORT
+        public static final int kBackLeftDriveMotorPort = 2;  //! PORT
+        public static final int kFrontRightDriveMotorPort = 6; //! PORT
+        public static final int kBackRightDriveMotorPort = 4; //! PORT
 
-        public static final int kFrontLeftTurningMotorPort = 7;
-        public static final int kBackLeftTurningMotorPort = 1;
-        public static final int kFrontRightTurningMotorPort = 5;
-        public static final int kBackRightTurningMotorPort = 3;
+        public static final int kFrontLeftTurningMotorPort = 7; //! PORT
+        public static final int kBackLeftTurningMotorPort = 1; //! PORT
+        public static final int kFrontRightTurningMotorPort = 5; //! PORT
+        public static final int kBackRightTurningMotorPort = 3; //! PORT
 
-        public static final boolean kFrontLeftTurningEncoderReversed = true;
-        public static final boolean kBackLeftTurningEncoderReversed = true;
-        public static final boolean kFrontRightTurningEncoderReversed = true;
-        public static final boolean kBackRightTurningEncoderReversed = true;
+        public static final boolean kFrontLeftTurningEncoderReversed = true; //REVERSE
+        public static final boolean kBackLeftTurningEncoderReversed = true;   //REVERSE
+        public static final boolean kFrontRightTurningEncoderReversed = true; //REVERSE
+        public static final boolean kBackRightTurningEncoderReversed = true; //REVERSE
+ 
+        public static final boolean kFrontLeftDriveEncoderReversed = true; //REVERSE
+        public static final boolean kBackLeftDriveEncoderReversed = true; //REVERSE
+        public static final boolean kFrontRightDriveEncoderReversed = false; //REVERSE
+        public static final boolean kBackRightDriveEncoderReversed = false; //REVERSE
 
-        public static final boolean kFrontLeftDriveEncoderReversed = true;
-        public static final boolean kBackLeftDriveEncoderReversed = true;
-        public static final boolean kFrontRightDriveEncoderReversed = false;
-        public static final boolean kBackRightDriveEncoderReversed = false;
+        public static final int kFrontLeftDriveAbsoluteEncoderPort = 0; //PORT
+        public static final int kBackLeftDriveAbsoluteEncoderPort = 2; //PORT
+        public static final int kFrontRightDriveAbsoluteEncoderPort = 1; //PORT
+        public static final int kBackRightDriveAbsoluteEncoderPort = 3; //PORT
 
-        public static final int kFrontLeftDriveAbsoluteEncoderPort = 0;
-        public static final int kBackLeftDriveAbsoluteEncoderPort = 2;
-        public static final int kFrontRightDriveAbsoluteEncoderPort = 1;
-        public static final int kBackRightDriveAbsoluteEncoderPort = 3;
+        public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false; //REVERSE
+        public static final boolean kBackLeftDriveAbsoluteEncoderReversed = false; //REVERSE
+        public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false; //REVERSE
+        public static final boolean kBackRightDriveAbsoluteEncoderReversed = false; //REVERSE
 
-        public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
-        public static final boolean kBackLeftDriveAbsoluteEncoderReversed = false;
-        public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false;
-        public static final boolean kBackRightDriveAbsoluteEncoderReversed = false;
 
-        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = -0.254;
-        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = -1.252;
-        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = -1.816;
-        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = -4.811;
+            //how many radians absolute encoder is offset; Once assemble, compare to straight wheels, determine values
+        public static final double kFrontLeftDriveAbsoluteEncoderOffsetRad = -0.254; //MEASURE
+        public static final double kBackLeftDriveAbsoluteEncoderOffsetRad = -1.252;  //MEASURE
+        public static final double kFrontRightDriveAbsoluteEncoderOffsetRad = -1.816; //MEASURE
+        public static final double kBackRightDriveAbsoluteEncoderOffsetRad = -4.811; //MEASURE
 
-        public static final double kPhysicalMaxSpeedMetersPerSecond = 5;
-        public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
+        public static final double kPhysicalMaxSpeedMetersPerSecond = 5; //MAX
+        public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI; //MAX ?
 
         public static final double kTeleDriveMaxSpeedMetersPerSecond = kPhysicalMaxSpeedMetersPerSecond / 4;
         public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = //
                 kPhysicalMaxAngularSpeedRadiansPerSecond / 4;
-        public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3;
-        public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 3;
+        public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3; //MAX
+        public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 3; //MAX
     }
 
     public static final class AutoConstants {
@@ -95,9 +97,9 @@ public final class Constants {
                 DriveConstants.kPhysicalMaxAngularSpeedRadiansPerSecond / 10;
         public static final double kMaxAccelerationMetersPerSecondSquared = 3;
         public static final double kMaxAngularAccelerationRadiansPerSecondSquared = Math.PI / 4;
-        public static final double kPXController = 1.5;
-        public static final double kPYController = 1.5;
-        public static final double kPThetaController = 3;
+        public static final double kPXController = 1.5; //TUNE
+        public static final double kPYController = 1.5; //TUNE
+        public static final double kPThetaController = 3; //TUNE
 
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints = //
                 new TrapezoidProfile.Constraints(
@@ -106,16 +108,16 @@ public final class Constants {
     }
 
 
-    public static final class OIConstants {
-        public static final int kDriverControllerPort = 0;
-
-        public static final int kDriverYAxis = 1;
-        public static final int kDriverXAxis = 0;
-        public static final int kDriverRotAxis = 4;
-        public static final int kDriverFieldOrientedButtonIdx = 1;
-
-        public static final int kResetHeadingButton = 2;
-
-        public static final double kDeadband = 0.05;
-    }
+    public static final class OIConstants { 
+        public static final int kDriverControllerPort = 0;  //PORT
+ 
+        public static final int kDriverYAxis = 1; //AXIS
+        public static final int kDriverXAxis = 0; //AXIS
+        public static final int kDriverRotAxis = 4; //AXIS
+        public static final int kDriverFieldOrientedButtonIdx = 1; //BUTTON
+ 
+        public static final int kResetHeadingButton = 2; //BUTTON
+ 
+        public static final double kDeadband = 0.05; 
+    } 
 }
