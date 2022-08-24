@@ -1,10 +1,13 @@
+coaxial swerve drive
 Includes:
 
-8 SparkMaxes (can be changed)
-4 absolute encoders (analog inputs on RoboRio) [makes sure modules properly oriented @ start of match, measures module rotation] (MA3, MAG encoders)
+8 SparkMaxes (can be changed) 
+4 absolute encoders (analog inputs on RoboRio) [makes sure modules properly oriented @ start of match, remembers zero rotation] 
+- encoder note: turning motors must have absolute encoders; consider CTRE Mag, MA3 (makes prematch setup way easier)
+- geared 1:1 with module rotation
 8 interior encoders (within motors)
 1 ADXRS450 gyro
-A PID controller (just Proportional) which controls each turning motor
+A PID controller (only proportional, add integral if necessary) which controls each turning motor
 Lots of constants that need very very immediate changing
 
 
@@ -21,5 +24,5 @@ Needed Before it Works:
 2. tune PID
 3. find parts necessary (could prove arduous)
 4. make necessary measurements (wheel diameters [inches], gear ratios, encoder offset [radians], et multae ceterae)
-5. set maximum values (safety!)
+5. set maximum values (safety concern)
 6. look at deadband values if you really want, but it's pretty good where it's at
