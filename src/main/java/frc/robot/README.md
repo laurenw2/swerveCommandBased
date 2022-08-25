@@ -4,7 +4,7 @@ Includes:
 8 SparkMaxes (can be changed) 
 4 absolute encoders (analog inputs on RoboRio) [makes sure modules properly oriented @ start of match, remembers zero rotation] 
 - encoder note: turning motors must have absolute encoders; consider CTRE Mag, MA3 (makes prematch setup way easier)
-- geared 1:1 with module rotation
+- module rotation geared 1:1
 8 interior encoders (within motors)
 1 ADXRS450 gyro
 A PID controller (only proportional, add integral if necessary) which controls each turning motor

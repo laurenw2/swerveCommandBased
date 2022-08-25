@@ -31,7 +31,6 @@ public class SwerveJoystickCmd extends CommandBase {
                 this.turningLimiter = new SlewRateLimiter(DriveConstants.kTeleDriveMaxAccelerationUnitsPerSecond);
             
                 addRequirements(swerveSubsystem);
-                
             }
 
     @Override
